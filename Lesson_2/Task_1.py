@@ -9,4 +9,26 @@
 """
 
 
+while True:
+    operation = input('Введите оператор или 0, для выхода: ')
 
+    if operation == '0':
+        break
+
+    if operation in ('+', '-', '*', '/'):
+        num1 = int(input('Введите число, первый операнд: '))
+        num2 = int(input('Введите число, второй операнд: '))
+
+        if operation == '+':
+            print(f'{num1} + {num2} = {num1 + num2}')
+        elif operation == '-':
+            print(f'{num1} - {num2} = {num1 - num2}')
+        elif operation == '*':
+            print(f'{num1} * {num2} = {num1 * num2}')
+        elif operation == '/':
+            try:
+                print(f'{num1} / {num2} = {num1 / num2}')
+            except ZeroDivisionError:
+                print('На ноль делить нельзя')
+    else:
+        continue
