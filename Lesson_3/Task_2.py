@@ -15,4 +15,5 @@ for i, value in enumerate(array):
     if value % 2 == 0:
         result.append(i)
 
-print(f'Индексы массива {array} с четными значениями - {result}')
+print(f'Индексы с четными значениями в массиве: {result}\n'
+      f'Исходный список: {array}')
