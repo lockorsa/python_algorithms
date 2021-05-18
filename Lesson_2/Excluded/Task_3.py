@@ -4,3 +4,8 @@
 """
 
 
+def reverse_num(n, res='', div=10):
+    if n == 0:
+        return res
+    else:
+        res
