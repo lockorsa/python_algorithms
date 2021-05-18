@@ -13,3 +13,4 @@ def func(n, result = 1):
 n = int(input('Введите число: '))
 
 print(func(n))
+
