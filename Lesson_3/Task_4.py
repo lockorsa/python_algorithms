@@ -6,14 +6,13 @@ from random import randint
 
 limit = int(input('Введите желаемую длину массива: '))
 array = [randint(1, 101) for _ in range(limit)]
-
 num_count = {}
 
-for num in array:
-    if num in num_count.keys():
-        num_count[num] += 1
+for el in array:
+    if el in num_count.keys():
+        num_count[el] += 1
     else:
-        num_count[num] = 1
+        num_count[el] = 1
 
 result = {'digit': 0, 'count': 0}
 

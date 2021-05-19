@@ -3,5 +3,5 @@
 """
 
 for num in range(2, 10):
-    tmp = len([i for i in range(2, 100) if i % num == 0])
+    tmp = len([0 for i in range(2, 100) if i % num == 0])
     print(f'Кратных {num} в ряде чисел: {tmp}')

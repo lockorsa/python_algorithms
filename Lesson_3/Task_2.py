@@ -10,10 +10,9 @@ limit = int(input('Введите желаемую длину массива: ')
 array = [randint(1, 101) for _ in range(limit)]
 
 result = []
-
-for i, value in enumerate(array):
-    if value % 2 == 0:
-        result.append(i)
+for index_, element in enumerate(array):
+    if not element & 1:
+        result.append(index_)
 
 print(f'Индексы с четными значениями в массиве: {result}\n'
       f'Исходный список: {array}')
