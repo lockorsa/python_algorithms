@@ -15,14 +15,13 @@ max_point = int(input('Введите верхнюю границу диапоз
 
 array = make_array(min_point, max_point)
 num_count = {}
+result = {'num': 0, 'count': 0}
 
 for el in array:
     if el in num_count.keys():
         num_count[el] += 1
     else:
         num_count[el] = 1
-
-result = {'num': 0, 'count': 0}
 
 for num, count in num_count.items():
     if result['count'] < count:

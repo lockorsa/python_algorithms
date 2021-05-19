@@ -15,21 +15,21 @@ min_point = int(input('Введите нижнюю границу диапозо
 max_point = int(input('Введите верхнюю границу диапозона: '))
 
 array = make_array(min_point, max_point)
-maximum = {'index': None, 'value': min_point}
-minimum = {'index': None, 'value': max_point}
+maximum = {'idx': None, 'value': min_point}
+minimum = {'idx': None, 'value': max_point}
+result = 0
 
 # находим пару индекс/значение для максимального и минимального числа
-for i, value in enumerate(array):
+for idx, value in enumerate(array):
     if value > maximum['value']:
-        maximum['index'], maximum['value'] = i, value
+        maximum['idx'], maximum['value'] = idx, value
     elif value < minimum['value']:
-        minimum['index'], minimum['value'] = i, value
+        minimum['idx'], minimum['value'] = idx, value
 
-result = 0
-for i in range(minimum['index'] + 1, maximum['index']):
+for i in range(minimum['idx'] + 1, maximum['idx']):
     result += array[i]
 
 print(f'Исходный массив: {array}\n'
-      f'Индекс/значение минимального элемента - ({minimum["index"]}, {minimum["value"]}), '
-      f'максимального - ({maximum["index"]}, {maximum["value"]})\n'
+      f'Индекс/значение минимального элемента - ({minimum["idx"]}, {minimum["value"]}), '
+      f'максимального - ({maximum["idx"]}, {maximum["value"]})\n'
       f'Сумма элементов между ними - {result}')
