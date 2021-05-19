@@ -4,8 +4,16 @@
 from random import randint
 
 
-limit = int(input('Введите желаемую длину массива: '))
-array = [randint(1, 101) for _ in range(limit)]
+def make_array(min_point, max_point):
+    limit = int(input('Введите желаемую длину массива: '))
+    return [randint(min_point, max_point + 1) for _ in range(limit)]
+
+
+print('Передайте параметры массива со случайными числами')
+min_point = int(input('Введите нижнюю границу диапозона: '))
+max_point = int(input('Введите верхнюю границу диапозона: '))
+
+array = make_array(min_point, max_point)
 num_count = {}
 
 for el in array:
@@ -14,11 +22,12 @@ for el in array:
     else:
         num_count[el] = 1
 
-result = {'digit': 0, 'count': 0}
+result = {'num': 0, 'count': 0}
 
 for num, count in num_count.items():
     if result['count'] < count:
-        result['digit'], result['count'] = num, count
+        result['num'],  = num
+        result['count'] = count
 
-print(f'Чаще всего в массиве встречается цифра {result["digit"]}, {result["count"]} раз/а\n'
+print(f'Чаще всего в массиве встречается цифра {result["num"]}, {result["count"]} раз/а\n'
       f'Исходный массив: {array}')

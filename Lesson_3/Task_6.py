@@ -5,11 +5,18 @@
 from random import randint
 
 
-limit = int(input('Введите желаемую длину массива: '))
-array = [randint(1, 101) for _ in range(limit)]
+def make_array(min_point, max_point):
+    limit = int(input('Введите желаемую длину массива: '))
+    return [randint(min_point, max_point + 1) for _ in range(limit)]
 
-maximum = {'index': None, 'value': 0}
-minimum = {'index': None, 'value': 101}
+
+print('Передайте параметры массива со случайными числами')
+min_point = int(input('Введите нижнюю границу диапозона: '))
+max_point = int(input('Введите верхнюю границу диапозона: '))
+
+array = make_array(min_point, max_point)
+maximum = {'index': None, 'value': min_point}
+minimum = {'index': None, 'value': max_point}
 
 # находим пару индекс/значение для максимального и минимального числа
 for i, value in enumerate(array):

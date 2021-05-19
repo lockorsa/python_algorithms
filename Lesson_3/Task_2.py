@@ -6,13 +6,21 @@
 from random import randint
 
 
-limit = int(input('Введите желаемую длину массива: '))
-array = [randint(1, 101) for _ in range(limit)]
+def make_array(min_point, max_point):
+    limit = int(input('Введите желаемую длину массива: '))
+    return [randint(min_point, max_point + 1) for _ in range(limit)]
 
+
+print('Передайте параметры массива со случайными числами')
+min_point = int(input('Введите нижнюю границу диапозона: '))
+max_point = int(input('Введите верхнюю границу диапозона: '))
+
+array = make_array(min_point, max_point)
 result = []
-for index_, element in enumerate(array):
-    if not element & 1:
-        result.append(index_)
+
+for idx, value in enumerate(array):
+    if not value & 1:
+        result.append(idx)
 
 print(f'Индексы с четными значениями в массиве: {result}\n'
       f'Исходный список: {array}')

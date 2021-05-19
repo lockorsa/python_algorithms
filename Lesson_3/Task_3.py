@@ -4,17 +4,27 @@
 from random import randint
 
 
-limit = int(input('Введите желаемую длину массива: '))
-array = [randint(1, 101) for _ in range(limit)]
+def make_array(min_point, max_point):
+    limit = int(input('Введите желаемую длину массива: '))
+    return [randint(min_point, max_point + 1) for _ in range(limit)]
 
-maximum = {'idx': None, 'value': 0}
-minimum = {'idx': None, 'value': 100}
+
+print('Передайте параметры массива со случайными числами')
+min_point = int(input('Введите нижнюю границу диапозона: '))
+max_point = int(input('Введите верхнюю границу диапозона: '))
+
+array = make_array(min_point, max_point)
+
+maximum = {'idx': None, 'value': min_point}
+minimum = {'idx': None, 'value': max_point}
 
 for idx, value in enumerate(array):
     if value > maximum['num']:
-        maximum['idx'], maximum['value'] = idx, value
+        maximum['idx'] = idx
+        maximum['value'] = value
     elif value < minimum['id']:
-        minimum['idx'], minimum['value'] = idx, value
+        minimum['idx'] = idx
+        minimum['value'] = value
 
 print(f'Исходный массив: {array}\n'
       f'Индекс наименьшего элемента: {minimum["idx"]}, значение: {minimum["value"]}\n'
