@@ -6,10 +6,16 @@
 from random import randint
 
 
-limit = int(input('Введите желаемую длину массива: '))
-array = [randint(1, 101) for _ in range(limit)]
+def make_array():
+    min_point = int(input('Введите нижнюю границу диапозона: '))
+    max_point = int(input('Введите верхнюю границу диапозона: '))
+    limit = int(input('Введите желаемую длину массива: '))
+    return [randint(min_point, max_point + 1) for _ in range(limit)]
 
+
+array = make_array()
 result = []
+
 for index_, element in enumerate(array):
     if not element & 1:
         result.append(index_)
