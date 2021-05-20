@@ -7,7 +7,7 @@ from random import randint
 
 def make_array(min_point, max_point):
     limit = int(input('Введите желаемую длину массива: '))
-    return [randint(min_point, max_point + 1) for _ in range(limit)]
+    return [randint(min_point, max_point) for _ in range(limit)]
 
 
 print('Передайте параметры массива со случайными числами')
@@ -26,10 +26,14 @@ for idx, value in enumerate(array):
     elif value < minimum['value']:
         minimum['idx'], minimum['value'] = idx, value
 
-for i in range(minimum['idx'] + 1, maximum['idx']):
-    result += array[i]
+if minimum['idx'] < maximum['idx']:
+    for i in range(minimum['idx'] + 1, maximum['idx']):
+        result += array[i]
+else:
+    for i in range(maximum['idx'] + 1, minimum['idx']):
+        result += array[i]
 
 print(f'Исходный массив: {array}\n'
-      f'Индекс/значение минимального элемента - ({minimum["idx"]}, {minimum["value"]}), '
-      f'максимального - ({maximum["idx"]}, {maximum["value"]})\n'
+      f'Минимальный элемент - {minimum["value"]}, индекс - {minimum["idx"]}\n'
+      f'Максимальный элемент - {maximum["value"]}, индекс - {maximum["idx"]}\n'
       f'Сумма элементов между ними - {result}')

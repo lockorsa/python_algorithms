@@ -6,7 +6,7 @@ from random import randint
 
 def make_array(min_point, max_point):
     limit = int(input('Введите желаемую длину массива: '))
-    return [randint(min_point, max_point + 1) for _ in range(limit)]
+    return [randint(min_point, max_point) for _ in range(limit)]
 
 
 print('Передайте параметры массива со случайными числами')

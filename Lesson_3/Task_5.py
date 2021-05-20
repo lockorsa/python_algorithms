@@ -6,7 +6,7 @@ from random import randint
 
 def make_array(min_point, max_point):
     limit = int(input('Введите желаемую длину массива: '))
-    return [randint(min_point, max_point + 1) for _ in range(limit)]
+    return [randint(min_point, max_point) for _ in range(limit)]
 
 
 print('Передайте параметры массива со случайными числами')
@@ -22,5 +22,10 @@ for idx, value in enumerate(array):
             result['idx'] = idx
             result['value'] = value
 
-print(f"Максимальный отрицательный элемент находится под индексом {result['index']}, значение: {result['value']}\n"
-      f"Исходный массив: {array}")
+if not result['idx'] is None:
+    print(f"Максимальный отрицательный элемент находится под индексом {result['idx']}, "
+          f"значение: {result['value']}\n"
+          f"Исходный массив: {array}")
+else:
+    print(f"В массиве нет отрицательных элементов\n"
+          f"Исходный массив: {array}")
