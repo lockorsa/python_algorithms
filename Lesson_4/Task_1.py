@@ -61,12 +61,25 @@ def most_frequent_3(array: list):
     return num
 
 
+def most_frequent_3(array: list):
+    counter = 0
+    num = array[0]
+
+    for i in array:
+        curr_frequency = array.count(i)
+        if curr_frequency > counter:
+            counter = curr_frequency
+            num = i
+
+    return num
+
+
 # алгоритм имеет линейную асимптотику, скорость исполнения возрастает синхронно увеличению объема данных
 # в каждом шаге объем массива увеличивается в 10 раз, время выполнения увеличивается в 8-10 раз
 
 # print(timeit('most_frequent_1(make_array(10))', number=1000, globals=globals()))       # 0.0086   10
 # print(timeit('most_frequent_1(make_array(100))', number=1000, globals=globals()))      # 0.1203   100
-# print(timeit('most_frequent_1(make_array(1000))', number=1000, globals=globals()))     # 0.7503   1000
+# print(timeit('most_frequent_1(make_array(1_000))', number=1000, globals=globals()))    # 0.7503   1000
 # print(timeit('most_frequent_1(make_array(10_000))', number=1000, globals=globals()))   # 7.2500   10_000
 # print(timeit('most_frequent_1(make_array(100_000))', number=1000, globals=globals()))  # 73.1201  100_000
 # print(timeit('most_frequent_1(make_array(200_000))', number=1000, globals=globals()))  # 146.2416 200_000
@@ -77,7 +90,7 @@ def most_frequent_3(array: list):
 
 # print(timeit('most_frequent_2(make_array(10))', number=1000, globals=globals()))       # 0.0100   10
 # print(timeit('most_frequent_2(make_array(100))', number=1000, globals=globals()))      # 0.0702   100
-# print(timeit('most_frequent_2(make_array(1000))', number=1000, globals=globals()))     # 0.6025   1000
+# print(timeit('most_frequent_2(make_array(1_000))', number=1000, globals=globals()))    # 0.6025   1000
 # print(timeit('most_frequent_2(make_array(10_000))', number=1000, globals=globals()))   # 5.6916   10_000
 # print(timeit('most_frequent_2(make_array(100_000))', number=1000, globals=globals()))  # 58.0524  100_000
 # print(timeit('most_frequent_2(make_array(200_000))', number=1000, globals=globals()))  # 127.3754 200_000
@@ -86,12 +99,14 @@ def most_frequent_3(array: list):
 # самый интересный опыт, алгоритм отказался выполняться при длине массива выше 1000 при том что я ждал более 10 минут
 # производительность алгоритма резко падает после увеличения объема данных
 # от 10 до 100 время увеличилось в 19 раз
-# при увеличении длины массива со 100 до 1_000 производительность уменьшилась в 67 раз(!!!)
+# при увеличении длины массива со 100 до 1_000 производительность уменьшилась в 6 раз
 
 
 # print(timeit('most_frequent_3(make_array(10))', number=1000, globals=globals()))       # 0.0090   10
 # print(timeit('most_frequent_3(make_array(100))', number=1000, globals=globals()))      # 0.1723   100
-# print(timeit('most_frequent_3(make_array(1000))', number=1000, globals=globals()))     # 11.5925  1000
-# print(timeit('most_frequent_3(make_array(10_000))', number=1000, globals=globals()))   # ERROR    10_000
+# print(timeit('most_frequent_3(make_array(1_000))', number=1000, globals=globals()))    # 11.5925  1_000
+# print(timeit('most_frequent_3(make_array(1_500))', number=1000, globals=globals()))    # 25.2456  1_500
+# print(timeit('most_frequent_3(make_array(2_500))', number=1000, globals=globals()))    # 70.1618  2_500
+# print(timeit('most_frequent_3(make_array(5_000))', number=1000, globals=globals()))    # ERROR    5_000
 # print(timeit('most_frequent_3(make_array(100_000))', number=1000, globals=globals()))  # ERROR    100_000
 # print(timeit('most_frequent_3(make_array(200_000))', number=1000, globals=globals()))  # ERROR    200_000
