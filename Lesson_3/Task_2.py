@@ -6,21 +6,24 @@
 from random import randint
 
 
-def make_array(min_point, max_point):
+def make_array():
+    print('Передайте параметры массива со случайными числами')
+    min_point = int(input('Введите нижнюю границу диапозона: '))
+    max_point = int(input('Введите верхнюю границу диапозона: '))
     limit = int(input('Введите желаемую длину массива: '))
     return [randint(min_point, max_point) for _ in range(limit)]
 
 
-print('Передайте параметры массива со случайными числами')
-min_point = int(input('Введите нижнюю границу диапозона: '))
-max_point = int(input('Введите верхнюю границу диапозона: '))
+def get_even(array):
+    for idx, value in enumerate(array):
+        if not value & 1:
+            result.append(idx)
+    return result
 
-array = make_array(min_point, max_point)
-result = []
 
-for idx, value in enumerate(array):
-    if not value & 1:
-        result.append(idx)
+if __name__ == '__main__':
+    array = make_array()
+    result = get_even(array)
 
-print(f'Индексы с четными значениями в массиве: {result}\n'
-      f'Исходный список: {array}')
+    print(f'Индексы с четными значениями в массиве: {result}\n'
+          f'Исходный список: {array}')

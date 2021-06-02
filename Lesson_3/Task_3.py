@@ -4,33 +4,32 @@
 from random import randint
 
 
-def make_array(min_point, max_point):
+def make_array():
+    print('Передайте параметры массива со случайными числами')
+    min_point = int(input('Введите нижнюю границу диапозона: '))
+    max_point = int(input('Введите верхнюю границу диапозона: '))
     limit = int(input('Введите желаемую длину массива: '))
     return [randint(min_point, max_point) for _ in range(limit)]
 
 
-print('Передайте параметры массива со случайными числами')
-min_point = int(input('Введите нижнюю границу диапозона: '))
-max_point = int(input('Введите верхнюю границу диапозона: '))
+def switch_min_max(array):
+    result = array.copy()
+    maximum = {'idx': None, 'value': float('-inf')}
+    minimum = {'idx': None, 'value': float('inf')}
+    for idx, value in enumerate(array):
+        if value > maximum['value']:
+            maximum['idx'] = idx
+            maximum['value'] = value
+        elif value < minimum['value']:
+            minimum['idx'] = idx
+            minimum['value'] = value
+    result[minimum['idx']] = maximum['value']
+    result[maximum['idx']] = minimum['value']
+    return result
 
-array = make_array(min_point, max_point)
-maximum = {'idx': None, 'value': min_point}
-minimum = {'idx': None, 'value': max_point}
 
-for idx, value in enumerate(array):
-    if value > maximum['value']:
-        maximum['idx'] = idx
-        maximum['value'] = value
-    elif value < minimum['value']:
-        minimum['idx'] = idx
-        minimum['value'] = value
-
-print(f'Исходный массив: {array}\n'
-      f'Индекс наименьшего элемента: {minimum["idx"]}, значение: {minimum["value"]}\n'
-      f'Индекс наибольшего элемента: {maximum["idx"]}, значение: {maximum["value"]}')
-
-# меняем положение максимального и минимального значения
-array[minimum['idx']] = maximum['value']
-array[maximum['idx']] = minimum['value']
-
-print(f'Преобразованный массив: {array}\n')
+if __name__ == '__main__':
+    array = make_array()
+    result = switch_min_max(array)
+    print(f'Исходный массив: {array}\n'
+          f'Преобразованный массив: {result}')

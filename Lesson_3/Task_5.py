@@ -4,28 +4,28 @@
 from random import randint
 
 
-def make_array(min_point, max_point):
+def make_array():
+    print('Передайте параметры массива со случайными числами')
+    min_point = int(input('Введите нижнюю границу диапозона: '))
+    max_point = int(input('Введите верхнюю границу диапозона: '))
     limit = int(input('Введите желаемую длину массива: '))
     return [randint(min_point, max_point) for _ in range(limit)]
 
 
-print('Передайте параметры массива со случайными числами')
-min_point = int(input('Введите нижнюю границу диапозона: '))
-max_point = int(input('Введите верхнюю границу диапозона: '))
+def max_negative(array):
+    result = {'idx': None, 'value': float('inf')}
+    for idx, value in enumerate(array):
+        if value < 0:
+            if value > result['value']:
+                result['idx'] = idx
+                result['value'] = value
+    if not result['idx'] is None:
+        return result
+    else:
+        raise Exception('Вы передали массив без отрицательных элементов')
 
-array = make_array(min_point, max_point)
-result = {'idx': None, 'value': max_point}
 
-for idx, value in enumerate(array):
-    if value < 0:
-        if value > result['value']:
-            result['idx'] = idx
-            result['value'] = value
-
-if not result['idx'] is None:
-    print(f"Максимальный отрицательный элемент находится под индексом {result['idx']}, "
-          f"значение: {result['value']}\n"
-          f"Исходный массив: {array}")
-else:
-    print(f"В массиве нет отрицательных элементов\n"
-          f"Исходный массив: {array}")
+if __name__ == '__main__':
+    array = make_array()
+    result = max_negative(array)
+    print(f'Индекс макисмального отрицательного элемента - {result["idx"]}, значение - {result["value"]}')
