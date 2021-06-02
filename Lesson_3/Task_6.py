@@ -24,12 +24,12 @@ def sum_between(array):
         elif value < minimum['value']:
             minimum['idx'], minimum['value'] = idx, value
 
-    if minimum['idx'] < maximum['idx']:
-        for i in range(minimum['idx'] + 1, maximum['idx']):
-            result += array[i]
-    else:
-        for i in range(maximum['idx'] + 1, minimum['idx']):
-            result += array[i]
+    if minimum['idx'] > maximum['idx']:
+        minimum['idx'], maximum['idx'] = maximum['idx'], minimum['idx']
+
+    for i in range(minimum['idx'] + 1, maximum['idx']):
+        result += array[i]
+
     return result
 
 
