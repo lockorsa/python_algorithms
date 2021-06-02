@@ -31,4 +31,5 @@ while True:
             except ZeroDivisionError:
                 print('На ноль делить нельзя')
     else:
+        print('Вы ввели неправильный знак')
         continue
