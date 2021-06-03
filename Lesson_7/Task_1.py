@@ -9,3 +9,18 @@
 ● постарайтесь сделать алгоритм умнее, но помните, что у вас должна остаться сортировка пузырьком.
     Улучшенные версии сортировки, например, расчёской, шейкерная и другие в зачёт не идут.
 """
+from random import randint
+
+
+def make_array():
+    SIZE = 25
+    return [randint(-100, 100) for _ in range(SIZE)]
+
+
+def bubble_sort(arr):
+    for i, x in enumerate(arr):
+        pass
+
+
+if __name__ == '__main__':
+    pass
