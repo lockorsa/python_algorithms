@@ -4,6 +4,7 @@
     в одной находятся элементы, которые не меньше медианы, в другой — не больше медианы.
 
 Примечание: задачу можно решить без сортировки исходного массива.
+
 Но если это слишком сложно, используйте метод сортировки, который не рассматривался на уроках
 (сортировка слиянием также недопустима).
 """
@@ -16,15 +17,15 @@ def make_array():
 
 
 def find_median(arr):
-    arr_copy = arr.copy()
+    array = arr.copy()
     middle = len(arr) // 2 + 1
     tmp = 0
     for _ in range(middle):
-        lowest = arr_copy[0]
-        for i in arr_copy:
+        lowest = array[0]
+        for i in array:
             if i < lowest:
                 lowest = i
-        arr_copy.remove(lowest)
+        array.remove(lowest)
         tmp += 1
         if tmp >= middle:
             return lowest
